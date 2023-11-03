@@ -1,0 +1,23 @@
+services:
+  node-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mariadb
+    links:
+      - mariadb
+
+  mariadb:
+    build:
+      context: .
+      dockerfile: Dockerfile.mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: mysecretpassword
+      MYSQL_DATABASE: mydatabase
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data:/var/lib/mysql

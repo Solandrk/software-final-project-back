@@ -1,0 +1,6 @@
+FROM mariadb:latest
+
+ENV MYSQL_ROOT_PASSWORD=my_root_password
+ENV MYSQL_DATABASE=pass
+
+EXPOSE 3306
